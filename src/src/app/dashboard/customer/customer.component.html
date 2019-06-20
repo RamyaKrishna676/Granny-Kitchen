@@ -1,0 +1,58 @@
+<!-- <div>
+  <app-header></app-header>
+</div> -->
+<br>
+<div fxLayout="row"
+  class="container"
+  fxLayout
+  fxLayout.xs="column"
+  fxLayoutGap="10px"
+  fxLayoutGap.xs="0">
+
+  <h3>Restaurants</h3>
+  <span fxFlex></span>
+  <button mat-raised-button color="primary" style="height: 40px">My Orders</button>
+  <!-- <span>Restaurants Name</span> -->
+  </div>
+  <div fxLayout="row"
+  class="container"
+fxLayout
+fxLayout.xs="column"
+fxLayoutGap="20px"
+fxLayoutGap.xs="0">
+<p class="mat-form-field--inline">
+  <mat-form-field>
+    <mat-label>Search By Restaurant Name</mat-label>
+    <input matInput [(ngModel)]="userInput"(keyup)="searchBy(userInput)">
+  </mat-form-field>
+  <!-- <button mat-raised-button (click)="searchBy(userInput)"style="width:30px;height:30px;margin-top:20px;">Search</button> -->
+</p>
+<span fxFlex></span>
+<app-sort-by [restaurantArray]="restaurantArray"></app-sort-by>
+</div>
+<div fxLayout="row wrap"
+class="container"
+fxLayout.xs="column"
+fxLayoutGap="20px"
+fxLayoutGap.xs="0">
+      <div *ngFor= "let restaurant of restaurantArray">
+          <mat-card class="example-card" [routerLink]="['/restaurantDetail', restaurant.id]" routerLinkActive="active">
+          <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+          </mat-card-header>
+          <img mat-card-image src="{{restaurant.imageUrl}}" alt="image">
+          <mat-card-content>
+              <h3>{{restaurant.name}}</h3>
+              <p>{{restaurant.address.street}},{{restaurant.address.city}},{{restaurant.address.pincode}},{{restaurant.address.state}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+              <button mat-raised-button color="accent">South Indian</button>
+              <button mat-raised-button color="accent">North Indian</button>
+          </mat-card-actions>
+          <mat-card-actions>
+              <span style="float:right;margin-top: 8px;">Rs {{restaurant.averagePrice}}</span>
+              <button mat-raised-button style="background-color: green;"><mat-icon style="color: white">star</mat-icon>{{restaurant.averageRating}}</button>
+              </mat-card-actions>
+          </mat-card>
+    </div>
+</div>

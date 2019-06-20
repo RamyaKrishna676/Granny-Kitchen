@@ -1,0 +1,26 @@
+<div class="main">
+    <form fxLayout="column" [formGroup]="loginForm"  fxLayoutGap="10px" (ngSubmit)="onSubmit(loginForm)">
+        <mat-form-field class="demo-full-width" >  
+          <input matInput placeholder="Email" formControlName="email"[(ngModel)]="email">  
+        </mat-form-field>  
+        <mat-error [hidden]="loginForm.get('email').valid && loginForm.get('email').untouched">  
+          <span *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched">
+            <span *ngIf=" loginForm.get('email').errors.required">Email is required !!!</span>
+            <span *ngIf="loginForm.get('email').errors.pattern">It should match the pattern !!</span>  
+        </span>
+        </mat-error>
+        <mat-form-field hintLabel="Minimum eight characters, at least one letter and one number !!">
+            <input matInput placeholder="Password" formControlName="password" [type]="hide ? 'password':'text'"[(ngModel)]="password"/>
+            <mat-icon matSuffix (click)="hide = !hide">
+              {{hide ? 'visibility':'visibility_off'}}
+            </mat-icon>
+        </mat-form-field>
+        <mat-error [hidden]="loginForm.get('password').valid && loginForm.get('password').untouched">  
+            <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
+              <span *ngIf=" loginForm.get('password').errors.required">Password is required !!!</span>
+              <span *ngIf="loginForm.get('password').errors.pattern">Minimum eight characters, at least one letter and one number !!</span>  
+          </span>
+        </mat-error>
+        <button type="submit" mat-raised-button color="primary" [disabled] = "!loginForm.valid">Submit</button>
+  </form>
+</div>

@@ -1,0 +1,9 @@
+<div fxLayout = "column" fxLayoutGap="10px" *ngFor="let review of reviews">
+  <div fxLayout = "row">
+    <p fxFlex="80%">{{review.customerName}}<sub><mat-icon style="font-size: 12px;">star</mat-icon>{{review.ratings}}</sub></p>
+    <p fxFlex="20%">21 May 9:00pm</p>  
+  </div>
+  <div fxLayout = "row">  
+      <p>{{review.description}}</p>
+  </div>
+</div>

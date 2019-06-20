@@ -1,0 +1,30 @@
+<div class="item item-1" fxFlex="20%">
+    <ul>
+        <li>South Indian</li>
+        <li>North Indian</li>
+        <li>Desserts</li>
+        <li>Biryani </li>
+        <li>Starters</li>
+    </ul>
+</div>
+
+<div class="item item-2" fxFlex fxFlexOrder="1" fxFlex="80%">
+    
+    <div fxFlex fxFlexOrder="1" fxFlex="40%">
+        <h3>South Indian</h3>
+        <br>
+        <mat-card class="example-card" *ngFor = "let food of foods$ | async ">
+            <mat-card-content>
+            <h4>
+                {{food.name}}
+            </h4>
+            <span>{{food.cuisine}}</span>
+            </mat-card-content>
+            <mat-card-actions>
+            <span>INR {{food.price}}</span>
+            <button mat-button>SHARE</button>
+            <button mat-raised-button color="primary"(click)="addToCart(food)">ADD TO CART</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

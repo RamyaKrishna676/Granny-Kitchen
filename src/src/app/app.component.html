@@ -1,0 +1,16 @@
+<!-- <app-signup></app-signup> -->
+<!-- <app-login></app-login> -->
+<!-- <app-customer></app-customer>   -->
+<!-- <app-restaurant-detail></app-restaurant-detail> -->
+<!-- <app-reviews-list></app-reviews-list> -->
+<div>
+  <app-header></app-header>
+</div>
+<div flexLayout="row"fxLayoutGap="20px" style="clear:left">
+  <div fxFlex="80%" id="part1">
+    <router-outlet></router-outlet>
+  </div>
+  <div fxFlex="20%" id="part2">
+    <app-cart></app-cart>
+  </div>
+</div>

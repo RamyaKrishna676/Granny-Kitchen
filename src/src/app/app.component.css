@@ -1,0 +1,18 @@
+h1{
+    text-align: center;
+    color: aqua;
+}
+
+/* body{
+    background-image: url('D:\Angular\project1\src\assets\food\background3.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    filter:opacity(10%);
+} */
+#part2{
+    border:1px solid black;
+}
