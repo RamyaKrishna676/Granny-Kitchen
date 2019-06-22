@@ -5,6 +5,7 @@ import { OrderService } from '../order.service';
 import { MatDialog } from '@angular/material';
 import { OrderDetailsComponent } from '../order-details/order-details.component';
 import { ViewOrderComponent } from '../view-order/view-order.component';
+import { FoodService } from 'src/app/foods/food.service';
 
 @Component({
   selector: 'app-order',
@@ -13,14 +14,16 @@ import { ViewOrderComponent } from '../view-order/view-order.component';
 })
 export class OrderComponent implements OnInit {
 
-  orderlist:Order[]=[];
+  pastOrderList:Order[]=[];
   orderSubcription:Subscription;
-  constructor(private orderService:OrderService,public dialog: MatDialog) { }
+  liveOrderList:Order[]=[];
+  constructor(private orderService:OrderService,public dialog: MatDialog, private foodService: FoodService) { }
 
   ngOnInit() {
     this.orderSubcription = this.orderService.ordersObservable.subscribe(
-      (data:Order[]) => (this.orderlist=data)
+      (data:Order[]) => (this.pastOrderList=data)
     );
+    this.orderSubcription = this.orderService.liveObservable.subscribe(data => {this.liveOrderList = data;console.log("data is",this.liveOrderList)});
     this.orderService.getOrders();
   }
   openDialog() {

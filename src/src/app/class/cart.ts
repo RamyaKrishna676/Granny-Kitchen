@@ -1,8 +1,9 @@
 import { FoodQuantity } from './foodQuantity';
-
-export class Cart{
+import { Restaurant } from './restaurant';
+export class Cart {
     id: number;
     foodQuantityList: FoodQuantity[];
     grandTotal: number;
+    restaurant:Restaurant;
 
 }

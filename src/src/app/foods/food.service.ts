@@ -13,7 +13,7 @@ export class FoodService {
 
   foodObservable:Subject<Food[]> = new Subject<Food[]>();
   cartObservable:Subject<FoodQuantity[]> = new Subject<FoodQuantity[]>();
-
+  
   temp:Food[];
   cartArray = [];
   totalAmount = [];
@@ -28,16 +28,9 @@ export class FoodService {
 
     return of(FOODS.filter(food=> food.restaurantId === + id));
   }
-  // getRestaurant(id: number | string) {
-  //   this.Foods();
-  //   return this.restaurantObservable.pipe(
-  //     // (+) before `id` turns the string into a number
-  //     map((restaurants: Restaurant[]) => restaurants.find(restaurant => restaurant.id === +id))
-  //   );
-    
-  // }
-  addToCart(food:Food){
  
+  addToCart(food:Food){
+   
     let tempFoodQ = this.cartArray.find(foodQ=>(foodQ.food == food));
     if(tempFoodQ==null)
     this.cartArray.push({food:food,quantity:1,totalPrice:food.price});
@@ -58,4 +51,8 @@ export class FoodService {
     this.cartObservable.next(this.cartArray);
     this.cartObservable.forEach(data=>console.log(data));
   }
+  getCategoryFood(category){
+    // FOODS.forEach(food => console.log(food.category.toString().toLowerCase().replace(" ","").search(category.toLowerCase().replace(" ",""))));
+    return of(this.temp.filter(food => (food.category.toString().toLowerCase().replace(" ","").indexOf(category.toLowerCase().replace(" ","")))!=-1));
+}
 }

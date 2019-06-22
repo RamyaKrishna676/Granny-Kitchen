@@ -1,5 +1,5 @@
 import { Order } from './order';
-
-export class Notification{
+export class Notification {
     order: Order;
+    
 }

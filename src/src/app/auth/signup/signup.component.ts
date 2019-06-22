@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators ,FormsModule,NgForm } from '@angular/forms'; 
 import { User } from 'src/app/class/user';
-import { ContactDetails } from 'src/app/class/contactDetails';
-import { Address } from '../../class/address';
-import { AddressBook } from '../../class/addressBook';
 import { Router } from '@angular/router';
+// import { ContactDetails } from 'src/app/class/contactDetails';
+// import { Address } from '../../class/address';
+// import { AddressBook } from '../../class/addressBook';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -15,27 +16,10 @@ export class SignupComponent implements OnInit {
 
   user : User = new User();
   hide = true;
+  
   registerForm: FormGroup;
-  // user: User = {
-  //   name: "",
-  //   userName: "",
-  //   password: "",
-  //   contactDetails:{
-  //     mobileNumber: null,
-  //     emailId : "",
-  //     addressBook : {
-  //       addressList: [{
-  //         addressLine1 : "",
-  //         street : "",
-  //         city : "",
-  //         pincode : null,
-  //         state : ""
-  //       }]
-
-  //     }
-  //   }
-  // }
-  constructor(private formBuilder: FormBuilder) { }
+ 
+  constructor(private formBuilder: FormBuilder,private router:Router) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -83,9 +67,16 @@ export class SignupComponent implements OnInit {
     })
     
   }
-  onSubmit(){
-    alert("Registration Successfull !!");
+  onSubmit(regForm:FormGroup){
+    let emailInput = regForm.get('contactDetails').get('email').value;
+    let passwordInput = regForm.get('password').value;
     
+    // this.obj.emailElement.push(emailInput);
+    // this.obj.passwordElement.push(passwordInput);
+    localStorage.setItem('email', emailInput);
+    localStorage.setItem('password', passwordInput);
+    alert("Registration Successfull !!");
+    this.router.navigate(['/login']);
   }
 }
 

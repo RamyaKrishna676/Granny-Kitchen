@@ -13,6 +13,7 @@ import { FoodService } from '../foods/food.service';
 import { OrderComponent } from '../order/order/order.component';
 import { ViewOrderComponent } from '../order/view-order/view-order.component';
 import { OrderDetailsComponent } from '../order/order-details/order-details.component';
+import { CartComponent } from '../order/cart/cart.component';
 
 
 
@@ -22,9 +23,14 @@ import { OrderDetailsComponent } from '../order/order-details/order-details.comp
     MaterialModule,
     FlexLayoutModule,
   ],
-  declarations: [RestaurantListComponent, RestaurantDetailComponent, ReviewsListComponent, SortByComponent,HeaderComponent,FoodListComponent,OrderComponent,ViewOrderComponent,OrderDetailsComponent],
+  declarations: [RestaurantListComponent, RestaurantDetailComponent, ReviewsListComponent, SortByComponent,HeaderComponent,FoodListComponent,OrderComponent,ViewOrderComponent,
+    OrderDetailsComponent, CartComponent],
+    
   providers: [RestaurantService,FoodService],
-  exports:[RestaurantDetailComponent,RestaurantListComponent,ReviewsListComponent,SortByComponent,HeaderComponent,FoodListComponent,OrderComponent,ViewOrderComponent,OrderDetailsComponent],
+
+  exports:[RestaurantDetailComponent,RestaurantListComponent,ReviewsListComponent,SortByComponent,HeaderComponent,FoodListComponent,OrderComponent,ViewOrderComponent,
+    OrderDetailsComponent,CartComponent],
+
     entryComponents:[ViewOrderComponent,OrderDetailsComponent]
 })
 export class RestaurantModule { }

@@ -2,9 +2,11 @@
     <app-header></app-header>
 </div> -->
 <br>
+<div fxLayout="row"fxLayoutGap="10px">
+<div fxFlex="80%">
 {{restaurant$ | async}}
 <ul atyle="color:white;">
-    <li><a href="#">Restaurants</a></li> /
+    <li><a routerLink="/customer"routerLinkActive="active">Restaurants</a></li> /
     <li *ngIf="restaurant$ | async as restaurant"><a  routerLink="">{{restaurant.name}}</a></li>
 </ul>
 
@@ -43,4 +45,8 @@
         </mat-tab>
     </mat-tab-group>
 </div>
-      
+</div>
+<div fxFlex="20%">
+    <app-cart></app-cart>
+</div>
+</div>    

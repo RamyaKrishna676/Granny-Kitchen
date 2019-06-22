@@ -3,8 +3,7 @@ import { Notification } from './notification';
 import { FoodReview } from './foodReview';
 import { Order } from './order';
 import { Address } from './address';
-
-export class Restaurant{
+export class Restaurant {
     id: number;
     name: string;
     manager: User;
@@ -20,4 +19,5 @@ export class Restaurant{
     averageRating: number;
     averagePrice: number;
     type:string[];
+    
 }

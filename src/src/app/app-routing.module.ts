@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path:"signup",
-    component:SignupComponent
+    component: SignupComponent
   },
   {
     path: 'restaurantDetail/:id', 
@@ -26,10 +26,6 @@ const routes: Routes = [
   {
     path:'customer',
     component:CustomerComponent
-  },
-  {
-    path:"",
-    component:LoginComponent
   }
   
 ];

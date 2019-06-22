@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FoodService } from '../food.service';
-import { Food } from 'src/app/class/food';
+import {Food} from 'src/app/class/food';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-
-
 @Component({
-  selector: 'app-food-list',
-  templateUrl: './food-list.component.html',
-  styleUrls: ['./food-list.component.css']
+selector: 'app-food-list',
+templateUrl: './food-list.component.html',
+styleUrls: ['./food-list.component.css']
 })
 export class FoodListComponent implements OnInit {
-
   foods$: Observable<Food[]>;
   selectedId: number;
   foodCart:Food[];
@@ -33,4 +30,8 @@ export class FoodListComponent implements OnInit {
     this.service.addToCart(food1)
     // this.service.cartObservable.subscribe(data => this.foodCart = data )
   }
+  searchCategory(category){
+    this.foods$ = this.service.getCategoryFood(category);
+  }
+
 }

@@ -2,8 +2,8 @@
   <mat-toolbar color="primary">
     <span style="font-family:'Payball',cursive;font-size: 28px;">Wheels<span style="font-size: 34px;">4</span>Meals</span>
     <span class="example-fill-remaining-space"></span>
-    <span><p routerLink="/login" style="text-decoration: none;color:white;margin-right: 20px;">login</p></span>
-    <span><p routerLink="/signup" style="text-decoration: none;color:white">Register</p></span>
-    <span><a style="text-decoration: none;color:white">Logout</a></span>
+    <span><p (click)="navLogin()"style="text-decoration: none;color:white;margin-right: 20px;"class="link">Login</p></span>
+    <span><p (click)="navSignup()" routerLinkActive="active"style="text-decoration: none;color:white"class="link">Register</p></span>&nbsp;&nbsp;
+    <span><p routerLinkActive="active"style="text-decoration: none;color:white"class="link">Logout</p></span>
   </mat-toolbar>
 <!-- </div> -->

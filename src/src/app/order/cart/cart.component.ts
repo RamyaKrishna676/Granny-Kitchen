@@ -3,6 +3,12 @@ import { FoodService } from 'src/app/foods/food.service';
 import { Food } from 'src/app/class/food';
 import { FoodQuantity } from 'src/app/class/foodQuantity';
 import { OrderService } from '../order.service';
+import { Order } from 'src/app/class/order';
+import { RestaurantService } from 'src/app/restaurant/restaurant.service';
+import { Restaurant } from 'src/app/class/restaurant';
+import { ParamMap,ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +20,9 @@ export class CartComponent implements OnInit {
   amount:number;
   amount1:number;
   data:FoodQuantity[];
-  constructor(private service: FoodService,private orderService: OrderService) { 
+  restName:string;
+  restaurant$: Observable<Restaurant>;
+  constructor(private service: FoodService,private orderService: OrderService,private restaurantService:RestaurantService,private route:ActivatedRoute) { 
      this.amount = 0;
   }
 
@@ -31,26 +39,16 @@ export class CartComponent implements OnInit {
       }
       console.log("inside cart",this.data)
     });
-  
-    //this.amount1 = this.getTotal();
-    //this.service.getFoodsAdded();
-    // if(this.data.length != 0){
-    //   for(let a of this.data){
-    //     this.amount += a.price;
-    //     console.log("amount is",this.amount);
-    //   }
-    // }
+    //to get restaurant name
+    this.restaurant$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.restaurantService.getRestaurant(params.get('id'))),
+      
+    );
+    this.restaurant$.forEach(data=>{ this.restName=data.name;console.log("name is",data.name);});
+    //this.restaurantService.restaurantObservable.subscribe(data => console.log(data));
   }
-  // getTotal(): any{
-  //   this.amount=0;
-  //   if(this.data.length != 0 ){
-  //     for(let a of this.data){
-  //       this.amount += a.price;
-  //       console.log("amount is",this.amount);
-  //     }
-  //   }
-  //   return this.amount;
-  // }
+ 
   deleteFood(x:FoodQuantity){
     let foodId = x.food.id;
     this.data = this.data.filter(x => x.food.id !== foodId);
@@ -73,6 +71,14 @@ export class CartComponent implements OnInit {
     this.service.updateCartObservable(this.data);
   }  
   checkOutFun(){
-    this.orderService.checkOutFun(this.data)
+    if(this.data != null){
+      alert("Your order is Successfull !!");
+    }else{
+      alert("Please add item to cart");
+    }
+    this.orderService.checkOutFun(this.data);
+    
+    this.data = null;
+    this.amount = 0;
   }
 }

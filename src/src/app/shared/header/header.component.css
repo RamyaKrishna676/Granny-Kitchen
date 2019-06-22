@@ -3,3 +3,7 @@
        Every toolbar row uses a flexbox row layout. */
     flex: 1 1 auto;
 }
+.link:hover{
+    background-color:rgb(102,102,255);
+    cursor: context-menu;
+}

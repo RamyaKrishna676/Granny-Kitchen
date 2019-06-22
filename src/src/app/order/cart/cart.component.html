@@ -1,6 +1,8 @@
+<span><h3>CART</h3></span>
+<div *ngIf="data != null">
 <div id="cart"fxLayout="column"fxLayoutGap="10px"*ngFor="let foodQuantity of data">
-  <span><h3>CART</h3></span>
-  <span style="font-size: 10px;">{{foodQuantity.food.name}}</span>
+  <!-- <span><h3>CART</h3></span> -->
+  <span style="font-size: 10px;"*ngIf="restName">{{restName}}</span>
   
   <table>
     <tr>
@@ -10,6 +12,7 @@
     </tr>
   </table><br>
   <button mat-raised-button class="btnCheckout"(click)="deleteFood(foodQuantity)">DELETE</button>
+</div>
 </div>
 <h3>Total Price = {{amount}}</h3>
 <button mat-raised-button class="btnCheckout"(click)="checkOutFun(foodQuantity)">CHECKOUT</button>

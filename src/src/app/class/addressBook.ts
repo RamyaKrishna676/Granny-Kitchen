@@ -1,5 +1,5 @@
 import { Address } from './address';
-
-export class AddressBook{
+export class AddressBook {
     addressList: Address[];
+
 }

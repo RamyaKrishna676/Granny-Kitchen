@@ -9,27 +9,24 @@ import { Observable } from 'rxjs';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
-    restaurantArray : Restaurant[];
-  name:string;
+  restaurantArray : Restaurant[];
+  name: string;
   selectedValue: string;
-  userInput : string;
+  userInput: string;
   key: string;
-  reverse= false;
-  a: string;;
-  states = ["Karnataka","Andhra Pradesh","Tamilnadu","Kerala"];
- 
-  sortArray1 = ['Restaurant','Category','Cuisine','type'];
-
+  reverse = false;
+  a: string;
+  states = ['Karnataka', 'Andhra Pradesh', 'Tamilnadu', 'Kerala'];
+  sortArray1 = ['Restaurant', 'Category', 'Cuisine', 'type'];
   constructor(private service: RestaurantService) { }
 
-
   ngOnInit() {
-    this.service.restaurantObservable.subscribe(data => this.restaurantArray = data);
+    this.service.restaurantObservable.subscribe(data => this.restaurantArray= data);
     this.service.getRestaurants();
   }
   searchBy(data:string){
     this.service.getRestaurants();
-    this.restaurantArray = this.restaurantArray.filter( item => item['name'].toLowerCase().includes(data.toLowerCase()) );
+    this.restaurantArray = this.restaurantArray.filter( item => item['name'].toLowerCase().includes(data.toLowerCase()));
     
   }
 

@@ -8,8 +8,8 @@ import { DeliveryPartner } from './deliveryPartner';
 import { Status } from './status';
 import { Issue } from './issue';
 import { DeliveryPartnerReview } from './deliveryPartnerReview';
-
-export class Order{
+import { Restaurant } from './restaurant';
+export class Order {
     id: number;
     date:string;
     cart: Cart;
@@ -21,4 +21,5 @@ export class Order{
     foodReview: FoodReview;
     issue: Issue;
     deliveryPartnerReview: DeliveryPartnerReview;
+    
 }

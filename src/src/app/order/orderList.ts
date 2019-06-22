@@ -1,11 +1,14 @@
 import { Order } from "../class/order";
+import { Restaurant } from "../class/restaurant";
 
 export const ORDERS:Order[] = [
     {
         id: 101,
         date:"22/2/2019",
+        
         cart: {
             id:201,
+            restaurant:new Restaurant(),
             foodQuantityList:[{
                 food:{
                     id:401,
@@ -13,7 +16,7 @@ export const ORDERS:Order[] = [
                     price: 40,
                     tax: 0,
                     restaurantId: 1001,
-                    category: "Indian Breeds",
+                    category: ['Biryani','South Indian'],
                     availability: true,
                     imageUrl: "",
                     averageRating: 4,
@@ -26,6 +29,7 @@ export const ORDERS:Order[] = [
             }],
             grandTotal: 250,
         },
+        
         payment: null,
         deliveryPartner:null,
         userName: null,
@@ -41,6 +45,7 @@ export const ORDERS:Order[] = [
         date:"25/3/2019",
         cart: {
             id:215,
+            restaurant:new Restaurant(),
             foodQuantityList:[{
                 food:{
                     id:402,
@@ -48,7 +53,7 @@ export const ORDERS:Order[] = [
                     price: 40,
                     tax: 0,
                     restaurantId: 1001,
-                    category: "Indian Breeds",
+                    category: ["Indian Breeds"],
                     availability: true,
                     imageUrl: "",
                     averageRating: 4,
@@ -61,6 +66,7 @@ export const ORDERS:Order[] = [
             }],
             grandTotal: 250,
         },
+        
         payment: null,
         deliveryPartner:null,
         userName: null,
